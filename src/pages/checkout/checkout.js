@@ -8,6 +8,7 @@ import {
 } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
+import { Link } from "react-router-dom";
 
 const Checkout = ({ cartItems, cartTotal }) => {
   return (
@@ -35,7 +36,11 @@ const Checkout = ({ cartItems, cartTotal }) => {
       <div className="total">
         <span>TOTAL: ${cartTotal}</span>
       </div>
-      <StripeCheckoutButton price={cartTotal} />
+      {cartTotal ? (
+        <StripeCheckoutButton price={cartTotal} />
+      ) : (
+        <Link to="/shop">Add something to cart</Link>
+      )}
     </div>
   );
 };
