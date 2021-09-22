@@ -10,7 +10,12 @@ const PreviewCollection = ({ title, items }) => {
     <div className="collection-preview">
       <div className="title-link-container">
         <h1 className="title">{title.toUpperCase()}</h1>
-        <Link to={`${match.path}/${title.toLowerCase()}`}>
+        <Link
+          to={`${match.path}/${title.toLowerCase()}`}
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
           <span>SEE ALL</span>
         </Link>
       </div>
