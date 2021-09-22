@@ -9,10 +9,11 @@ import { auth, createUserInDB } from "./firebase/firebase.utils";
 import { useDispatch, useSelector } from "react-redux";
 import Checkout from "./pages/checkout/checkout";
 import { setCurrentUser } from "./redux/user/userSlice";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 const App = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.user.currentUser);
+  const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
     let unsubscribedFromAuth = null;

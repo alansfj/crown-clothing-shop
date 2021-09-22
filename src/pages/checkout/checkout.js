@@ -4,16 +4,15 @@ import { useSelector } from "react-redux";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
 import { Link } from "react-router-dom";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../redux/cart/cart.selectors";
 
 const Checkout = () => {
-  const cartItems = useSelector(state => state.cart.cartItems);
+  const cartItems = useSelector(selectCartItems);
 
-  const cartTotal = useSelector(state =>
-    state.cart.cartItems.reduce(
-      (accu, cartItem) => accu + cartItem.quantity * cartItem.price,
-      0
-    )
-  );
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <div className="checkout-page">
